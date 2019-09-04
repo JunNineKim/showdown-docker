@@ -4,7 +4,7 @@ Showdown과 Showdown Web Manager는 내장되어 있지 않으므로, 원 제작
 
 # Requirements
 - Showdown (1.55) (https://iodides.tistory.com/category/ShowDown)
-- Showdown-manager (1.0.0) (https://github.com/kumryung/showdown-manager)
+- Showdown-manager (1.0.1) (https://github.com/kumryung/showdown-manager)
 
 # Usage
 ```
