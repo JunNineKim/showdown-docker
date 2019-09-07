@@ -10,8 +10,9 @@ Showdown과 Showdown Web Manager는 내장되어 있지 않으므로, 원 제작
 ```
 docker run -d \
   --name=showdown \
-  -e PUID=1000 \
-  -e PGID=1000 \
+  -e PUID=0 \
+  -e PGID=100 \
+  -e PERMISSION=777 \
   -p 80:80 \
   -p 4040:4040 \
   -p 9091:9091 \
@@ -28,13 +29,16 @@ docker run -d \
 - banyazavi/showdown 뒤의 태그는 사용하려는 시스템의 아키텍처에 맞추어야 합니다.  
   amd64(데스크탑용), arm(임베디드용)을 기본 제공하고 있습니다.  
   제공하지 않는 아키텍처의 경우 소스코드를 다운받아 직접 빌드하여 사용해야 합니다.
-- -v 옵션으로 연결된 폴더와 내부 파일이 -e에서 설정한 PUID/PGID의 소유로 변경되므로, 적절한 유저와 그룹을 할당해야 합니다.
+- -v 옵션으로 연결된 /transmission, /output 폴더와 내부 파일이  
+  -e에서 설정한 PUID/PGID의 소유, PERMISSION에서 설정한 권한으로 변경되므로,  
+  적절한 유저와 그룹 및 권한을 할당해야 합니다.
 
 # Parameters
 Parameter|Function
 ---|---
 -e PUID|리눅스 유저 ID (연결된 볼륨의 소유자)
 -e PGID|리눅스 그룹 ID (연결된 볼륨의 소유그룹)
+-e PERMISSION|/transmission, /output 권한 (연결된 볼륨의 권한)
 -p 80|Showdown Manager 웹 접속 포트
 -p 4040|Showdown 접속 포트 (도커 외부에서 CLI 접속할 경우)
 -p 9091|Transmission RPC 접속 포트

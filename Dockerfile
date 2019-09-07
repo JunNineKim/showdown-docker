@@ -1,14 +1,15 @@
 FROM alpine:latest
 
 ENV PUID 0
-ENV PGID 0
+ENV PGID 100
+ENV PERMISSION 777
 
 RUN apk update
 
 # Set locale and timezone
 RUN apk add --no-cache tzdata
 RUN cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-RUN echo "Asia/Seoul" >  /etc/timezone
+RUN echo "Asia/Seoul" > /etc/timezone
 ENV TZ Asia/Seoul
 ENV LANG ko_KR.UTF-8
 ENV LANGUAGE ko_KR.UTF-8
